@@ -105,7 +105,7 @@ def parse_args(parser):
     parser.add_argument(
         "--media-type",
         help="Specify the media type",
-        choices=["movies", "series", "animes"],
+        choices=["movies", "series", "animes", "anime", "movie", "serie"],
         required=True,
     )
     return parser.parse_args()
@@ -336,17 +336,17 @@ def main():
         source_parent_folder = "/mnt/ultra"
 
     match args.media_type:
-        case "movies":
+        case "movies" | "movie":
             print_info("Media type set to MOVIES")
             destination_parent_folder = "/mnt/data-pool/multimedia/Movies"
             if not args.media_source_folder:
                 source_parent_folder = f"{source_parent_folder}/movies"
-        case "series":
+        case "series" | "serie":
             print_info("Media type set to SERIES")
             destination_parent_folder = "/mnt/data-pool/multimedia/Series"
             if not args.media_source_folder:
                 source_parent_folder = f"{source_parent_folder}/series"
-        case "animes":
+        case "animes" | "anime":
             print_info("Media type set to ANIMES")
             destination_parent_folder = "/mnt/data-pool/multimedia/Series"
             if not args.media_source_folder:
