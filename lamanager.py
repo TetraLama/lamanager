@@ -293,7 +293,7 @@ def determinate_destination_path(
     log: logging.Logger,
 ):
     file_name = os.path.basename(file_path)
-    if "Series" in destination_parent_folder:
+    if "Series" in destination_parent_folder or "Animes" in destination_parent_folder:
         try:
             pattern = r"(Livre|Saison|Season|S)(\d{1,2})[\.E](\d{1,3})"
 
@@ -348,7 +348,7 @@ def main():
                 source_parent_folder = f"{source_parent_folder}/series"
         case "animes" | "anime":
             print_info("Media type set to ANIMES")
-            destination_parent_folder = "/mnt/data-pool/multimedia/Series"
+            destination_parent_folder = "/mnt/data-pool/multimedia/Animes"
             if not args.media_source_folder:
                 source_parent_folder = f"{source_parent_folder}/animes"
         case _:
